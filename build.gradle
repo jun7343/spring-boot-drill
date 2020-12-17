@@ -14,10 +14,9 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    //implementation 'org.springframework.boot:spring-boot-starter-security'
-    implementation 'pl.allegro.tech.boot:handlebars-spring-boot-starter:0.3.2'
-    implementation 'org.springframework.boot:spring-boot-devtools'
-    implementation 'org.postgresql:postgresql:42.2.18'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'com.h2database:h2'
     implementation 'junit:junit:4.12'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
