@@ -24,7 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         this.authenticationSuccessHandler = authenticationSuccessHandler;
     }
 
-    // 정적파일(js, template, css, images 등) Authentication 패스   *설정 안 하게 된다면 시큐리티 필터에 의해 정적파일이 호출이 안됌
+    // 정적파일(js, template, css, images 등) authentication 패스   * 설정 안 하게 된다면 Security filter 에 의해 정적파일이 호출이 안됨
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().requestMatchers(PathRequest.toStaticResources().atCommonLocations());
@@ -63,10 +63,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .alwaysRemember(false)                                     // remember-me 기능 활성화 되지 않아도 실행 여부
                 .userDetailsService(new AccountService())
             .and()
-                .sessionManagement()                // Session 관리
-                .maximumSessions(2)
-                .maxSessionsPreventsLogin(true)     // 동시 로그인 차단
-                .expiredUrl("/login");
+                .sessionManagement()                                        // Session 관리
+                .maximumSessions(1)                                         // maximum session 갯수
+                .maxSessionsPreventsLogin(true)                             // 동시 로그인 차단
+                .expiredUrl("/login");                                      // session 만료시 이동할 URL
     }
 
     // PasswordEncoder Bean 등록
