@@ -1,20 +1,18 @@
 package com.security.config;
 
-import com.security.account.AccountService;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
-import org.springframework.security.web.authentication.logout.CompositeLogoutHandler;
-import org.springframework.security.web.authentication.logout.SimpleUrlLogoutSuccessHandler;
 
 @Configuration
+@EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private AuthenticationSuccessHandler authenticationSuccessHandler;
@@ -47,21 +45,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .successHandler(authenticationSuccessHandler)
                 .defaultSuccessUrl("/")                                    // login 성공시 이동할 주소
                 .failureUrl("/login?error")                                // login 실패시 이동할 주소
-                .failureHandler(new SimpleUrlAuthenticationFailureHandler()) // failure handler
+                //.failureHandler(new SimpleUrlAuthenticationFailureHandler()) // failure handler
                 .permitAll()                                               // 위에 지정한 URL 은 전부 인증 필요 없음
             .and() 
                 .logout()                                                  // logout 처리
                 .logoutUrl("/logout")                                      // logout 처리 URL
                 .logoutSuccessUrl("/")                                     // logout 성공시 이동할 URL
                 .deleteCookies("JSESSIONID", "remember-me")                // logout 후 쿠키 삭제
-                .addLogoutHandler(new CompositeLogoutHandler())            // logout handler
-                .logoutSuccessHandler(new SimpleUrlLogoutSuccessHandler()) // logout 성공 후 handler
+                //.addLogoutHandler(new CompositeLogoutHandler())            // logout handler
+                //.logoutSuccessHandler(new SimpleUrlLogoutSuccessHandler()) // logout 성공 후 handler
             .and()
                 .rememberMe()
                 .rememberMeParameter("remember")                           // remember-me parameter
                 .tokenValiditySeconds(3600)                                // default 14일
                 .alwaysRemember(false)                                     // remember-me 기능 활성화 되지 않아도 실행 여부
-                .userDetailsService(new AccountService())
+                //.userDetailsService(new AccountService())
             .and()
                 .sessionManagement()                                        // Session 관리
                 .maximumSessions(1)                                         // maximum session 갯수
