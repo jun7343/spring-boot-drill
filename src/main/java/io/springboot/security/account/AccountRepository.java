@@ -1,4 +1,4 @@
-package com.security.account;
+package io.springboot.security.account;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

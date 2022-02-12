@@ -1,4 +1,4 @@
-package com.security.controller;
+package io.springboot.security.controller;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

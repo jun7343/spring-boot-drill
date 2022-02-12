@@ -1,4 +1,4 @@
-package com.security.account;
+package io.springboot.security.account;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;

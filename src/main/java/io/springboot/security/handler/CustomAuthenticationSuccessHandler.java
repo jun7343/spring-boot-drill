@@ -1,6 +1,5 @@
-package com.security.handler;
+package io.springboot.security.handler;
 
-import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;

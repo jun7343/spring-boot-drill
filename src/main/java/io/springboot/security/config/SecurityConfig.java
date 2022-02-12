@@ -1,4 +1,4 @@
-package com.security.config;
+package io.springboot.security.config;
 
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
